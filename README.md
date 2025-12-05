@@ -1128,3 +1128,546 @@ console.log(x + y);
 </details>
 
 ---
+
+
+<div align="center">
+  <img height="60" src="https://img.icons8.com/color/344/javascript.png">
+  <h1>JavaScript Output Questions</h1>
+</div>
+
+---
+
+###### 31. What's the output?
+
+```javascript
+const x = [1];
+const y = [2];
+console.log(x + y);
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: `"12"`
+
+When you use the `+` operator with arrays in JavaScript, it performs string concatenation, not array concatenation.
+
+JavaScript implicitly converts both arrays to strings:
+- `[1]` becomes `"1"`
+- `[2]` becomes `"2"`
+
+Then it concatenates them: `"1" + "2" = "12"`
+
+**Key Point:** The `+` operator does not perform array concatenation in JavaScript. When used with arrays, it converts them to strings first.
+
+</p>
+</details>
+
+---
+
+###### 32. What's the output?
+
+```javascript
+const data = {
+  name: "sai",
+  name: "krishna"
+}
+console.log(data.name);
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: `"krishna"`
+
+In JavaScript, if an object has multiple properties with the same name, the last one defined will overwrite the previous ones.
+
+Object properties are treated as key-value pairs where keys must be unique. When you define the same key multiple times, each subsequent definition replaces the previous value.
+
+</p>
+</details>
+
+---
+
+###### 33. What's the output?
+
+```javascript
+let x = 10 + 2 * 3
+console.log(x);
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: `16`
+
+The expression is evaluated according to operator precedence rules. Multiplication (`*`) has higher precedence than addition (`+`).
+
+Evaluation order:
+1. First: `2 * 3 = 6`
+2. Then: `10 + 6 = 16`
+
+</p>
+</details>
+
+---
+
+###### 34. What's the output?
+
+```javascript
+const x = [1, 2, 3];
+const y = [1, 3, 4];
+console.log(x + y);
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: `"1,2,31,3,4"`
+
+When you use the `+` operator with arrays, JavaScript converts each array to a string by calling `toString()`:
+- `x.toString()` becomes `"1,2,3"`
+- `y.toString()` becomes `"1,3,4"`
+
+Then the `+` operator concatenates these strings: `"1,2,3" + "1,3,4" = "1,2,31,3,4"`
+
+</p>
+</details>
+
+---
+
+###### 35. What's the output?
+
+```javascript
+console.log(+true);
+console.log(!"sai");
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: `1` and `false`
+
+**First line:** `console.log(+true);`
+- The unary plus operator (`+`) converts its operand to a number
+- `true` converts to `1`
+
+**Second line:** `console.log(!"sai");`
+- The logical NOT operator (`!`) converts its operand to boolean and negates it
+- `"sai"` is a non-empty string (truthy value)
+- Negating a truthy value results in `false`
+
+</p>
+</details>
+
+---
+
+###### 36. What's the output?
+
+```javascript
+console.log([] + []);
+console.log([1] + []);
+console.log([1] + "abc");
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: `""`, `"1"`, `"1abc"`
+
+When you use the `+` operator with arrays, JavaScript converts them to strings using `toString()`:
+
+1. `[] + []`: Empty arrays convert to empty strings → `"" + "" = ""`
+2. `[1] + []`: `[1]` becomes `"1"`, `[]` becomes `""` → `"1" + "" = "1"`
+3. `[1] + "abc"`: `[1]` becomes `"1"` → `"1" + "abc" = "1abc"`
+
+</p>
+</details>
+
+---
+
+###### 37. What's the output?
+
+```javascript
+function getAge(...args) {
+  console.log(typeof args)
+}
+getAge(21)
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: `"object"`
+
+The `...args` rest parameter syntax collects all arguments into an array. Even though you pass `21`, `args` becomes `[21]`.
+
+In JavaScript, arrays are technically a type of object. When you use `typeof` on an array, it returns `"object"`, not `"array"`.
+
+</p>
+</details>
+
+---
+
+###### 38. What's the output?
+
+```javascript
+const obj = {
+  a: "one",
+  b: "two",
+  a: "three"
+}
+console.log(obj);
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: `{ a: "three", b: "two" }`
+
+When an object has duplicate keys, the last occurrence overwrites previous values. This happens silently without any error.
+
+The key `a` is first assigned `"one"`, then redefined with `"three"` (overwriting the first value). The key `b` stays `"two"`.
+
+</p>
+</details>
+
+---
+
+###### 39. What's the output?
+
+```javascript
+var z = 1, y = z = typeof y;
+console.log(y);
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: `"undefined"`
+
+Due to variable hoisting with `var`, both `z` and `y` are declared but initialized to `undefined` before the assignment.
+
+Evaluation (right-to-left):
+1. `typeof y` evaluates first → `"undefined"` (because `y` is hoisted but not yet assigned)
+2. `z = "undefined"` (overwrites the initial value of `1`)
+3. `y = "undefined"`
+
+**Key points:**
+- Variables declared with `var` are hoisted and initialized to `undefined`
+- Assignment is evaluated right-to-left: `a = b = c` means `b = c` first, then `a = b`
+
+</p>
+</details>
+
+---
+
+###### 40. What's the output?
+
+```javascript
+console.log(false || null || "Hello");
+console.log(false && null && "Hello");
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: `"Hello"` and `false`
+
+**First line:** `false || null || "Hello"`
+- Logical OR (`||`) returns the first truthy value
+- `false` → falsy, check next
+- `null` → falsy, check next
+- `"Hello"` → truthy, return `"Hello"`
+
+**Second line:** `false && null && "Hello"`
+- Logical AND (`&&`) returns the first falsy value
+- `false` → falsy, return `false` immediately
+
+**Key rules:**
+- `||` (OR): Stops at the first truthy value
+- `&&` (AND): Stops at the first falsy value
+
+</p>
+</details>
+
+---
+
+###### 41. What's the output?
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+const [x, ...y] = numbers;
+console.log(x, y);
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: `1 [2, 3, 4, 5]`
+
+This is array destructuring with the rest operator:
+- `x` is assigned the first element (`1`)
+- `...y` uses the rest operator to collect remaining elements into a new array
+
+Result:
+- `x` → `1`
+- `y` → `[2, 3, 4, 5]`
+
+**Note:** The rest operator (`...`) must always be the last element in destructuring.
+
+</p>
+</details>
+
+---
+
+###### 42. What's the output?
+
+```javascript
+const str = "abc" + + "def";
+console.log(str);
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: `"abcNaN"`
+
+Breaking down `"abc" + + "def"`:
+- The first `+` is the string concatenation operator
+- The second `+` is the unary plus operator (converts to number)
+
+Evaluation:
+1. `+ "def"` tries to convert `"def"` to a number → results in `NaN`
+2. `"abc" + NaN` → JavaScript converts `NaN` to string `"NaN"`
+3. Final result: `"abc" + "NaN" = "abcNaN"`
+
+**Key takeaway:** The unary `+` operator converts values to numbers. Invalid conversions produce `NaN`.
+
+</p>
+</details>
+
+---
+
+###### 43. What's the output?
+
+```javascript
+let newlist = [1].push(2);
+console.log(newlist.push(3));
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: `TypeError: newlist.push is not a function`
+
+The `push()` method returns the **new length** of the array, not the array itself.
+
+1. `[1].push(2)` adds `2` to the array, making it `[1, 2]`, but returns `2` (the new length)
+2. `newlist` is now `2` (a number)
+3. Attempting `newlist.push(3)` fails because numbers don't have a `push()` method
+
+**Key takeaway:** Always remember that `push()` returns the array's length, not the array.
+
+</p>
+</details>
+
+---
+
+###### 44. What's the output?
+
+```javascript
+console.log(0 || 1);
+console.log(1 || 2);
+console.log(0 && 1);
+console.log(1 && 2);
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: `1`, `1`, `0`, `2`
+
+**Logical OR (`||`):**
+- `0 || 1` → `0` is falsy, return first truthy value → `1`
+- `1 || 2` → `1` is truthy, return it immediately → `1`
+
+**Logical AND (`&&`):**
+- `0 && 1` → `0` is falsy, return it immediately → `0`
+- `1 && 2` → Both truthy, return last value → `2`
+
+**Rules:**
+- `||`: Returns first truthy value (or last value if all falsy)
+- `&&`: Returns first falsy value (or last value if all truthy)
+
+</p>
+</details>
+
+---
+
+###### 45. What's the output?
+
+```javascript
+console.log(data());
+var data = function() {
+  return "1";
+}
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: `TypeError: data is not a function`
+
+Due to hoisting, the declaration of `data` is hoisted to the top, but its initialization is not.
+
+At the time of `console.log(data())`:
+- `data` exists (hoisted) but equals `undefined`
+- Calling `undefined()` throws a TypeError
+
+**Comparison:**
+- **Function expression** (`var data = function(){}`): Only the variable declaration is hoisted
+- **Function declaration** (`function data(){}`): The entire function is hoisted and callable
+
+</p>
+</details>
+
+---
+
+###### 46. What's the output?
+
+```javascript
+const arr = [1, 2, 3];
+arr[5] = 6;
+console.log(arr.length);
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: `6`
+
+JavaScript arrays are dynamic. When you assign to index `5`:
+- The array expands to accommodate it
+- Indexes `3` and `4` become empty slots
+- The array becomes: `[1, 2, 3, empty, empty, 6]`
+
+The `length` property equals the highest index + 1: `5 + 1 = 6`
+
+**Key takeaway:** Empty slots are not the same as `undefined` – they are gaps in the array.
+
+</p>
+</details>
+
+---
+
+###### 47. What's the output?
+
+```javascript
+const obj = {
+  a: 1
+}
+obj.a = 2;
+console.log(obj);
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: `{ a: 2 }`
+
+The `const` keyword prevents reassigning the variable `obj` to a new object, but it doesn't prevent modifying the object's properties.
+
+You can change `obj.a` from `1` to `2`, but you cannot do `obj = {}` (reassignment).
+
+**Key takeaway:** `const` protects the variable reference, not the object's contents.
+
+</p>
+</details>
+
+---
+
+###### 48. What's the output?
+
+```javascript
+let x = {
+  a: undefined,
+  b: null
+}
+console.log(JSON.stringify(x))
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: `{"b":null}`
+
+`JSON.stringify()` has specific rules:
+- Properties with `undefined` values are **excluded** from the output
+- `null` is a valid JSON value and is **included**
+
+Result: Only property `b` (with value `null`) appears in the JSON string.
+
+</p>
+</details>
+
+---
+
+###### 49. What's the output?
+
+```javascript
+console.log(true + 1);
+console.log(true + "1");
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: `2` and `"true1"`
+
+**First line:** `true + 1`
+- Boolean converts to number: `true` → `1`
+- Addition: `1 + 1 = 2`
+
+**Second line:** `true + "1"`
+- When `+` is used with a string, everything converts to strings
+- `true` → `"true"`
+- Concatenation: `"true" + "1" = "true1"`
+
+**Rules:**
+- `+` with numbers: Booleans convert to numbers (`true` → `1`, `false` → `0`)
+- `+` with strings: All values convert to strings and concatenate
+
+</p>
+</details>
+
+---
+
+###### 50. What's the output?
+
+```javascript
+const str = "hello";
+str.data = "val";
+console.log(str.data);
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: `undefined`
+
+Primitive strings (like `"hello"`) cannot have properties added to them.
+
+What happens:
+1. When you write `str.data = "val"`, JavaScript temporarily converts the primitive to a String object
+2. The property is added to this temporary object
+3. The temporary object is immediately discarded
+4. When you access `str.data`, a new temporary object is created (without the `data` property)
+5. Result: `undefined`
+
+**Key takeaway:** Primitives (strings, numbers, booleans) cannot hold custom properties. Use objects if you need to add properties.
+
+</p>
+</details>
+
+---
