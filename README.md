@@ -1,4 +1,7 @@
-# JavaScript Output Questions
+<div align="center">
+  <img height="60" src="https://img.icons8.com/color/344/javascript.png">
+  <h1>JavaScript Output Questions</h1>
+</div>
 
 A comprehensive collection of JavaScript output-based interview questions to test your understanding of core concepts like hoisting, type coercion, closures, event loop, and more.
 
@@ -1126,14 +1129,6 @@ console.log(x + y);
 **Key concept:** The `+` operator with arrays performs string concatenation, not array concatenation.
 
 </details>
-
----
-
-
-<div align="center">
-  <img height="60" src="https://img.icons8.com/color/344/javascript.png">
-  <h1>JavaScript Output Questions</h1>
-</div>
 
 ---
 
